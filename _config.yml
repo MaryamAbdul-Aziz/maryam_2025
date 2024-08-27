@@ -2,8 +2,8 @@ title: Nighthawk Pages
 description: "Class of 2025"
 owner_name: Maryam Abdul-Aziz
 github_username: maryamabdul-aziz
-github_repo: "student25" 
-baseurl: "/student25"
+github_repo: "maryam_2025" 
+baseurl: "/maryam_2025"
 future: true
 remote_theme: jekyll/minima
 minima:
