@@ -1,8 +1,10 @@
 ---
 layout: base
-title: Student Home 
+title: Home 
 description: Home Page
 hide: true
 ---
 
-My journey starts here.
+This is the start of my AP Computer Science Principles journey here at Del Norte High School!
+
+![code overlay](images/compsci.jpg)
