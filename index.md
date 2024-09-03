@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Home 
+title: Maryam's Home Page 
 description: Home Page
 hide: true
 ---
