@@ -109,7 +109,9 @@ a {
   color: $header-heading-color;
   text-align: center;
   background-color: $header-bg-color;
-  background-image: linear-gradient(120deg, rgba(137, 232, 213, 0.5), rgba(174, 217, 224, 0.807));
+  background-image: linear-gradient(120deg, rgba(173, 122, 153, 1), rgba(178, 206, 222, 1));
+  // old colors: purple and pink
+  // background-image: linear-gradient(120deg, rgba(141, 107, 148, 1), rgba(177, 133, 167, 1));
 
   @include large {
     padding: 5rem 6rem;
