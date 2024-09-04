@@ -14,11 +14,6 @@ First div:
     <button><a href="https://www.buzzfeed.com/mccarricksean/which-disney-princes-are-you">Click here to take the quiz!</a></button>
 </div>
 
-<p><h3>What Disney Princess are you?</h3></p>
-<div>
-    <button><a href="https://www.buzzfeed.com/mccarricksean/which-disney-princes-are-you">Click here to take the quiz!</a></button>
-</div>
-
 <br>
 <br>
 Second div:
