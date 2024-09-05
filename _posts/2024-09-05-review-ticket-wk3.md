@@ -10,6 +10,10 @@ courses: { compsci: {week: 3} }
 
 - Changed theme of blog
 - Updated about page
+- Added "notebook layout" to my repository
+    - Added scheduleStudent.html
+    - Added compsci.md to navigation and _config.yml
+    - Added compsci.yml
 - Completed Verify section of tools setup
 - Frontend Development Hacks (wireframe)
 - Attempted to change theme to Cayman Dark, decided against it
