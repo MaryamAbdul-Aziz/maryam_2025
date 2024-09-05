@@ -23,6 +23,6 @@ plugins:
 header_pages:
   - navigation/blog.md
   - navigation/compsci.md
-  - navigation/search.md
   - navigation/about.md
+  - navigation/search.md
   - README4YML.md
