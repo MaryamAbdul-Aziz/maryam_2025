@@ -1,6 +1,6 @@
 ---
 layout: scheduleStudent
 title: Notebook
-units: "1,2,3,4"
+units: "1,2"
 course: compsci
 ---
