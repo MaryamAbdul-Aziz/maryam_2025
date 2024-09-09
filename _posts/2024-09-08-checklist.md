@@ -50,19 +50,22 @@ See previous video and live demonstration
 
 <br>
 
-- [ ] **Hacks GitHub Pages Playground**
-    - Rank: 3.5
+- [X] **Hacks GitHub Pages Playground**
+    - Rank: 3
     - Notes: 
-        - Have updated both `index.md` and About pages. Did not add submenus but did implement old Notebook table design from previous year. 
-        - Made a [planning](https://maryamabdul-aziz.github.io/maryam_2025//2024/09/05/daily-plan-wk3.html) vs [accomplished](https://maryamabdul-aziz.github.io/maryam_2025//2024/09/05/review-ticket-wk3.html) document. 
-        - Do not have a notebook cell with JavaScript but have implemented JS into [index.md page](https://maryamabdul-aziz.github.io/maryam_2025/). 
-        - Have set up various blog pages for utterances (including this page) and have received peer graders.
+        - Have updated both `index.md` and About pages 
+        - Have implemented several different custom theme settings
+        - Working in one group repo instead of seperate repos
+        - Made a [brainwrite](https://maryamabdul-aziz.github.io/prince/brainwrite)
+        - Have began [trying to implement JS](https://github.com/MaryamAbdul-Aziz/prince/commit/44fb42a8c7c30520f0c9353a00950b9754ee3d8f) but have not yet added CSS and HTML elements to complete the code. 
 
 <br>
 
 - [X] **Hacks SASS Basics**
     - Rank: 4
     - Summary of changes: Changed theme, changed theme background colors, changed theme header text color, changed theme button color, changed theme text highlight color
+<br>
+
 [Link to all total changes made within my themes SASS file](https://github.com/MaryamAbdul-Aziz/maryam_2025/commits/main/_sass/jekyll-theme-cayman.scss)
 
 [Addition of a mixin into my SASS file](https://github.com/MaryamAbdul-Aziz/maryam_2025/commit/16b4b385d09d194da32db9fa5a3aa0812453fcc8)
@@ -75,8 +78,9 @@ See previous video and live demonstration
 
 <br>
 
-- [ ] **Pair Programming**
-    - Rank:
+- [X] **Pair Programming**
+    - Rank: 3.5
+    - Notes: Have worked together with Joanna on [GitHub Pages Playground site](https://maryamabdul-aziz.github.io/prince)
 
 <br>
 
