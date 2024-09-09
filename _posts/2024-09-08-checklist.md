@@ -10,7 +10,9 @@ courses: { compsci: {week: 3} }
 
 - [X] **Laptop Verification or Cloud Workspace**
     - Rank: 4
-![screenshot of terminal with linux commands]({{site.baseurl}}/images/checklist/verification.png)
+<br>
+
+![screenshot of terminal with linux commands]({{site.baseurl}}/images/checklist/verification2.png)
 
 <br>
 
@@ -19,7 +21,7 @@ courses: { compsci: {week: 3} }
 <br>
 [Watch the process here](https://youtu.be/mKcT-wwQyJY)
 
-![debugger view]({{site.baseurl}}/images/checklist/debugger.png)
+![debugger view]({{site.baseurl}}/images/checklist/debuggerimg.png)
 <br>
 
 - [X] **Show VSCode GitLens**
@@ -34,6 +36,8 @@ See previous video and live demonstration
 - [X] **GitHub cloud repo**
     - Rank: 4
     - Notes: live push change, verify id, review profile
+<br>
+
 [Link to GitHub repository here](https://github.com/MaryamAbdul-Aziz/maryam_2025)
 
 <br>
@@ -74,6 +78,8 @@ See previous video and live demonstration
 
 - [X] **Hacks Jupyter Notebook/Frontend**
     - Rank: 4
+<br>
+
 [Linked here](https://maryamabdul-aziz.github.io/maryam_2025//2024/09/03/frontend-dev-hacks.html)
 
 <br>
@@ -104,60 +110,80 @@ Always on time to class
 
 - [X] **Work Habits**
     - Rank: 4
+<br>
+
 Set up computer right as I enter the classroom, work the entire time during class
 
 <br>
 
 - [X] **Behavior**
     - Rank: 4
+<br>
+
 Never had any behavioral issues, always considerate and representing Nighthawk values
 
 <br>
 
 - [X] **Timeliness**
     - Rank: 4
+<br>
+
 Finish all assignments within allotted timeframe
 
 <br>
 
 - [X] **Tech Sense**
     - Rank: 4
+<br>
+
 Strong grasp on computer, tools, GitHub, terminal, VSCode, and more
 
 <br>
 
 - [X] **Tech Talk**
     - Rank: 4
+<br>
+
 Able to explain ideas and acheivements thoroughly and coherently
 
 <br>
 
 - [X] **Tech Growth**
     - Rank: 4
+<br>
+
 Learned a lot about how to set up virtual environments, SASS, how to edit blog themes, and have helped a lot of other peers with their issues
 
 <br>
 
 - [X] **Advocacy**
     - Rank: 4
+<br>
+
 Asked teacher for help when I came across problem I was unable to solve
 
 <br>
 
 - [X] **Comm & Collab**
     - Rank: 4
+<br>
+
 Very communicative with everyone at my table, very collaborative and involved with everyone
 
 <br>
 
 - [X] **Integrity**
     - Rank: 4
+<br>
+
 Strong sense of integrity, always completing assignments to full ability
 
 <br>
 
 - [X] **Organized**
     - Rank: 4
+<br>
+
 Keep all of my work organized with its own frontmatter, title, and designation
 
 <br>
