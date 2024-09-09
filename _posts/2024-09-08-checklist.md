@@ -17,7 +17,7 @@ courses: { compsci: {week: 3} }
 - [X] **VSCode**
     - Rank: 4
 <br>
-<a href="https://youtu.be/mKcT-wwQyJY">Watch the process here</a>
+[Watch the process here](https://youtu.be/mKcT-wwQyJY)
 
 ![debugger view]({{site.baseurl}}/images/checklist/debugger.png)
 <br>
@@ -34,7 +34,7 @@ See previous video and live demonstration
 - [X] **GitHub cloud repo**
     - Rank: 4
     - Notes: live push change, verify id, review profile
-<a href="https://github.com/MaryamAbdul-Aziz/maryam_2025">Link to GitHub repository here</a>
+[Link to GitHub repository here](https://github.com/MaryamAbdul-Aziz/maryam_2025)
 
 <br>
 
@@ -52,22 +52,26 @@ See previous video and live demonstration
 
 - [ ] **Hacks GitHub Pages Playground**
     - Rank: 3.5
-    - Notes: Have updated both `index.md` and About pages. Did not add submenus but did implement old Notebook table design from previous year. Made a <a href="https://maryamabdul-aziz.github.io/maryam_2025//2024/09/05/daily-plan-wk3.html"planning></a> vs <a href="https://maryamabdul-aziz.github.io/maryam_2025//2024/09/05/review-ticket-wk3.html"accomplished></a> document. Do not have a notebook cell with JavaScript but have implemented JS into<a href="https://maryamabdul-aziz.github.io/maryam_2025/"index.md page></a>. Have set up various blog pages for utterances (including this page) and have received peer graders.
+    - Notes: 
+        - Have updated both `index.md` and About pages. Did not add submenus but did implement old Notebook table design from previous year. 
+        - Made a [planning](https://maryamabdul-aziz.github.io/maryam_2025//2024/09/05/daily-plan-wk3.html) vs [accomplished](https://maryamabdul-aziz.github.io/maryam_2025//2024/09/05/review-ticket-wk3.html) document. 
+        - Do not have a notebook cell with JavaScript but have implemented JS into [index.md page](https://maryamabdul-aziz.github.io/maryam_2025/). 
+        - Have set up various blog pages for utterances (including this page) and have received peer graders.
 
 <br>
 
 - [X] **Hacks SASS Basics**
     - Rank: 4
     - Summary of changes: Changed theme, changed theme background colors, changed theme header text color, changed theme button color, changed theme text highlight color
-<a href="https://github.com/MaryamAbdul-Aziz/maryam_2025/commits/main/_sass/jekyll-theme-cayman.scss"Link to all total changes made within my themes SASS file></a>
+[Link to all total changes made within my themes SASS file](https://github.com/MaryamAbdul-Aziz/maryam_2025/commits/main/_sass/jekyll-theme-cayman.scss)
 
-<a href="https://github.com/MaryamAbdul-Aziz/maryam_2025/commit/16b4b385d09d194da32db9fa5a3aa0812453fcc8"Addition of a mixin into my SASS file></a>
+[Addition of a mixin into my SASS file](https://github.com/MaryamAbdul-Aziz/maryam_2025/commit/16b4b385d09d194da32db9fa5a3aa0812453fcc8)
 
 <br>
 
 - [X] **Hacks Jupyter Notebook/Frontend**
     - Rank: 4
-<a href="https://maryamabdul-aziz.github.io/maryam_2025//2024/09/03/frontend-dev-hacks.html"Linked here></a>
+[Linked here](https://maryamabdul-aziz.github.io/maryam_2025//2024/09/03/frontend-dev-hacks.html)
 
 <br>
 
