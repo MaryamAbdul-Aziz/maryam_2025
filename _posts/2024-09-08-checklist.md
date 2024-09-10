@@ -96,11 +96,11 @@ See previous video and live demonstration
 <br>
 
 
-**Total:**
+**Total:** 39.5
 
 <br>
 
-**Average:**
+**Average:** 3.95
 
 <br>
 
