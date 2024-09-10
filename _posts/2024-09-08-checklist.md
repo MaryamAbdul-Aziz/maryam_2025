@@ -49,8 +49,13 @@ See previous video and live demonstration
 
 <br>
 
-- [ ] **Hacks Tools & Equipment Play**
-    - Rank: 
+- [X] **Hacks Tools & Equipment Play**
+    - Rank: 4
+    - Notes: Finished assignment, completed all tasks, installed all libraries
+
+<br>
+
+[Link to the assignment](https://maryamabdul-aziz.github.io/maryam_2025//2024/09/08/python_IPYNB_2_.html)
 
 <br>
 
