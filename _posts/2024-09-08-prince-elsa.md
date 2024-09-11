@@ -14,7 +14,7 @@ Elsa!
 **Movie:** Frozen (2013)
 <br>
 
-**Country of Origin:** norway
+**Country of Origin:** Norway
 <br>
 
 **Movie Length:** 1:42
