@@ -1,0 +1,132 @@
+---
+layout: post
+title: Pages Playground Home
+permalink: /princess/home
+type: hacks
+courses: { compsci: {week: 3} }
+---
+
+{% include nav_princess.html %}
+
+This is the home page to our Princess directory! Click on the links above to learn more about our favorite princesses!
+
+<div class="poll-container">
+    <h2>Who is your favorite Disney princess?</h2>
+
+    <form id="pollForm">
+        <div class="poll-option">
+            <input type="radio" id="mulan" name="character" value="Mulan">
+            <label for="mulan">Mulan</label>
+        </div>
+        <div class="poll-option">
+            <input type="radio" id="moana" name="character" value="Moana">
+            <label for="moana">Moana</label>
+        </div>
+        <div class="poll-option">
+            <input type="radio" id="elsa" name="character" value="Elsa">
+            <label for="elsa">Elsa</label>
+        </div>
+        <div class="poll-option">
+            <input type="radio" id="rapunzel" name="character" value="Rapunzel">
+            <label for="rapunzel">Rapunzel</label>
+        </div>
+
+        <button type="button" onclick="submitVote()">Vote</button>
+    </form>
+
+    <div id="pollResults" class="poll-results" style="display: none;">
+        <h3>Poll Results:</h3>
+        <ul>
+            <li>Mulan: <span id="mulanVotes">0</span></li>
+            <li>Moana: <span id="moanaVotes">0</span></li>
+            <li>Elsa: <span id="elsaVotes">0</span></li>
+            <li>Rapunzel: <span id="rapunzelVotes">0</span></li>
+        </ul>
+    </div>
+
+    <button type="button" onclick="clearPoll()">Clear Poll Results</button>
+</div>
+
+<script>
+// Generic reset function to ensure immutability and cleaner updates
+function resetPollData() {
+    return {
+        "Mulan": 0,
+        "Moana": 0,
+        "Elsa": 0,
+        "Rapunzel": 0
+    };
+}
+
+// Initial vote counts
+let pollData = resetPollData();
+
+// Load existing votes from localStorage (if available)
+if (localStorage.getItem('pollData')) {
+    try {
+        // Parse the stored data and verify it is valid
+        const storedData = JSON.parse(localStorage.getItem('pollData'));
+        if (storedData && typeof storedData === 'object') {
+            pollData = { ...pollData, ...storedData }; // Safely merge stored data
+        }
+    } catch (e) {
+        console.error('Error parsing pollData from localStorage', e);
+        localStorage.removeItem('pollData'); // Clear corrupted data
+    }
+}
+
+// Handle vote submission
+function submitVote() {
+    const selectedOption = document.querySelector('input[name="character"]:checked');
+    
+    if (selectedOption) {
+        const selectedValue = selectedOption.value;
+
+        // Increment the selected character's vote count
+        pollData[selectedValue] = (pollData[selectedValue] || 0) + 1;
+
+        // Store the updated poll data in localStorage
+        localStorage.setItem('pollData', JSON.stringify(pollData));
+        
+        updatePollResults();
+
+        // Show results after voting
+        document.getElementById("pollResults").style.display = "block";
+    } else {
+        alert("Please select an option before voting.");
+    }
+}
+
+// Update poll results on the page
+function updatePollResults() {
+    for (const [character, count] of Object.entries(pollData)) {
+        document.getElementById(`${character.toLowerCase()}Votes`).textContent = count;
+    }
+}
+
+// Clear poll results and localStorage
+function clearPoll() {
+    // Reset poll data using the generic reset function
+    pollData = resetPollData();
+
+    // Remove poll data from localStorage
+    localStorage.removeItem('pollData');
+
+    // Update the poll results on the page
+    updatePollResults();
+
+    // Hide poll results section
+    document.getElementById("pollResults").style.display = "none";
+
+    alert("Poll results successfully cleared.");
+}
+
+// Initialize the page with existing data
+updatePollResults();
+</script>
+
+![smiling princesses]({{site.baseurl}}/images/princess/happy.png)
+
+<br>
+
+![Disney Princess banner]({{site.baseurl}}/images/princess/princesses.jpg)
