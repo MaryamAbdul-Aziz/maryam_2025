@@ -2,7 +2,6 @@
 title: Snake 
 layout: default
 description: A pretty advanced use of JavaScript building classic snake game using menu controls, key events, snake simulation and timers.  
-image: /images/snake.png
 permalink: snake
 courses: { compsci: {week: 4} }
 type: hacks
@@ -20,7 +19,7 @@ type: hacks
     canvas{
         display: none;
         border-style: solid;
-        border-width: 5px;
+        border-width: 10px;
         border-color: #FFFFFF;
     }
     canvas:focus{
@@ -272,14 +271,15 @@ type: hacks
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "lightpink";
+            //background color
+            ctx.fillStyle = "LightGreen";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
             for(let i = 0; i < snake.length; i++){
-                activeDot(snake[i].x, snake[i].y);
+                activeDot(snake[i].x, snake[i].y); // Snake remains as rectangles
             }
             // Paint food
-            activeDot(food.x, food.y);
+            activeDot(food.x, food.y, true);
             // Debug
             //document.getElementById("debug").innerHTML = snake_dir + " " + snake_next_dir + " " + snake[0].x + " " + snake[0].y;
             // Recursive call after speed delay, déjà vu
@@ -327,7 +327,7 @@ type: hacks
                     if (snake_dir !== 0)    // not up
                         snake_next_dir = 2; // then switch down
                     break;
-                case 65: // 'A' key (left)
+                                    case 65: // 'A' key (left)
                     if (snake_dir !== 1) // not right
                         snake_next_dir = 3; // then switch left
                     break;
@@ -347,9 +347,19 @@ type: hacks
         }
         /* Dot for Food or Snake part */
         /////////////////////////////////////////////////////////////
-        let activeDot = function(x, y){
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+        let activeDot = function(x, y, isFood = false){
+            if (isFood) {
+            // Draw the food as a strawberry emoji
+                const strawberrySize = BLOCK;
+                const strawberryX = x * BLOCK;
+                const strawberryY = y * BLOCK;
+                ctx.font = `${strawberrySize}px sans-serif`;
+                ctx.fillText("🍓", strawberryX, strawberryY + strawberrySize);
+            } else {
+                // Draw the snake as a rectangle (SNAKE COLOR)
+                ctx.fillStyle = "#FFFFFF";
+                ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+            }
         }
         /* Random food placement */
         /////////////////////////////////////////////////////////////
@@ -388,4 +398,3 @@ type: hacks
         }
     })();
 </script>
-
