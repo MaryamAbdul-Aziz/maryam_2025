@@ -104,6 +104,18 @@ type: hacks
                 <input id="speed3" type="radio" name="speed" value="35"/>
                 <label for="speed3">Fast</label>
             </p>
+            <p>Food:
+                <input id="strawberry" type="radio" name="food" checked/>
+                <label for="strawberry">Strawberry 🍓,</label>
+                <input id="croissant" type="radio" name="food"/>
+                <label for="croissant">Croissant 🥐,</label>
+                <input id="cheese" type="radio" name="food"/>
+                <label for="cheese">Cheese 🧀,</label>
+                <input id="burrito" type="radio" name="food"/>
+                <label for="burrito">Burrito 🌯,</label>
+                <input id="soup" type="radio" name="food"/>
+                <label for="soup">Soup 🥫</label>
+            </p>            
             <p>Wall:
                 <input id="wallon" type="radio" name="wall" value="1" checked/>
                 <label for="wallon">On</label>
@@ -117,7 +129,7 @@ type: hacks
 <script>
     (function(){
         /* Attributes of Game */
-        /////////////////////////////////////////////////////////////
+        
         // Canvas & Context
         const canvas = document.getElementById("snake");
         const ctx = canvas.getContext("2d");
@@ -149,7 +161,7 @@ type: hacks
         let score;
         let wall;
         /* Display Control */
-        /////////////////////////////////////////////////////////////
+        
         // 0 for the game
         // 1 for the main menu
         // 2 for the settings screen
@@ -177,8 +189,14 @@ type: hacks
                     break;
             }
         }
+        let selectedFood = "🍓"; // Default food emoji
+        let selectedColor = "PaleGoldenRod"; // Default color
+
+
+        const food_setting = document.getElementsByName("food"); 
+    
         /* Actions and Events  */
-        /////////////////////////////////////////////////////////////
+        
         window.onload = function(){
             // HTML Events to Functions
             button_new_game.onclick = function(){newGame();};
@@ -216,7 +234,7 @@ type: hacks
             }, true);
         }
         /* Snake is on the Go (Driver Function)  */
-        /////////////////////////////////////////////////////////////
+        
         let mainLoop = function(){
             let _x = snake[0].x;
             let _y = snake[0].y;
@@ -272,7 +290,8 @@ type: hacks
             // Repaint canvas
             ctx.beginPath();
             //background color
-            ctx.fillStyle = "LightGreen";
+            ctx.fillStyle = selectedColor
+            //ctx.fillStyle = "LightGreen";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
             for(let i = 0; i < snake.length; i++){
@@ -286,7 +305,7 @@ type: hacks
             setTimeout(mainLoop, snake_speed);
         }
         /* New Game setup */
-        /////////////////////////////////////////////////////////////
+        
         let newGame = function(){
             // snake game screen
             showScreen(SCREEN_SNAKE);
@@ -307,7 +326,7 @@ type: hacks
             mainLoop();
         }
         /* Key Inputs and Actions */
-        /////////////////////////////////////////////////////////////
+
         let changeDir = function(key){
             // test key and switch direction
             switch(key) {
@@ -346,15 +365,39 @@ type: hacks
             }
         }
         /* Dot for Food or Snake part */
-        /////////////////////////////////////////////////////////////
+
+    for (let i = 0; i < food_setting.length; i++) {
+        food_setting[i].addEventListener("change", function() {
+            if (food_setting[i].checked) {
+                if (food_setting[i].id === "strawberry") {
+                    selectedFood = "🍓";
+                    selectedColor = "PaleGoldenRod";
+                } else if (food_setting[i].id === "croissant") {
+                    selectedFood = "🥐";
+                    selectedColor = "Plum";
+                } else if (food_setting[i].id === "cheese") {
+                    selectedFood = "🧀";    
+                    selectedColor = "Orchid";
+                } else if (food_setting[i].id === "burrito") {
+                    selectedFood = "🌯";
+                    selectedColor = "PaleTurquoise";
+                } else if (food_setting[i].id === "soup") {
+                    selectedFood = "🥫";  
+                    selectedColor = "LightSlateGrey";   
+                }
+            }
+        });
+    }
+
+
         let activeDot = function(x, y, isFood = false){
             if (isFood) {
-            // Draw the food as a strawberry emoji
-                const strawberrySize = BLOCK;
-                const strawberryX = x * BLOCK;
-                const strawberryY = y * BLOCK;
-                ctx.font = `${strawberrySize}px sans-serif`;
-                ctx.fillText("🍓", strawberryX, strawberryY + strawberrySize);
+            // Draw the food as a food emoji
+                const foodSize = BLOCK;
+                const foodX = x * BLOCK;
+                const foodY = y * BLOCK;
+                ctx.font = `${foodSize}px sans-serif`;
+                ctx.fillText(selectedFood, foodX, foodY + foodSize);
             } else {
                 // Draw the snake as a rectangle (SNAKE COLOR)
                 ctx.fillStyle = "#FFFFFF";
@@ -362,7 +405,7 @@ type: hacks
             }
         }
         /* Random food placement */
-        /////////////////////////////////////////////////////////////
+        
         let addFood = function(){
             food.x = Math.floor(Math.random() * ((canvas.width / BLOCK) - 1));
             food.y = Math.floor(Math.random() * ((canvas.height / BLOCK) - 1));
@@ -373,16 +416,16 @@ type: hacks
             }
         }
         /* Collision Detection */
-        /////////////////////////////////////////////////////////////
+        
         let checkBlock = function(x, y, _x, _y){
             return (x === _x && y === _y);
         }
         /* Update Score */
-        /////////////////////////////////////////////////////////////
+        
         let altScore = function(score_val){
             ele_score.innerHTML = String(score_val);
         }
-        /////////////////////////////////////////////////////////////
+        
         // Change the snake speed...
         // 150 = slow
         // 100 = normal
@@ -390,11 +433,11 @@ type: hacks
         let setSnakeSpeed = function(speed_value){
             snake_speed = speed_value;
         }
-        /////////////////////////////////////////////////////////////
+        
         let setWall = function(wall_value){
             wall = wall_value;
             if(wall === 0){screen_snake.style.borderColor = "#606060";}
-            if(wall === 1){screen_snake.style.borderColor = "#FFFFFF";}
+            if(wall === 1){screen_snake.style.borderColor = "#85877c";}
         }
     })();
 </script>
