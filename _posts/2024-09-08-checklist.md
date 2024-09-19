@@ -1,12 +1,28 @@
 ---
 comments: true
 layout: post
-title: Checklist
+title: Checklist 2
 type: tangibles
 courses: { compsci: {week: 3} }
 ---
 
 ## Student Skills Checklist
+
+|Skill|Rank|Ratio|
+|--|--|--|
+|Laptop Verification or Cloud Workspace|4|0.9|
+|VSCode|4|0.9|
+|Show VSCode GitLens|4|0.9|
+|GitHub Cloud Repo|4|0.9|
+|GitHub Pages Actions|4|0.9|
+|Hacks Tools & Equipment Play|4|0.9|
+|Hacks GitHub Pages Playground|3|0.85|
+|Hacks SASS Basics|4|0.9|
+|Hacks Jupyter Notebook/Frontend|4|0.9|
+|Pair Programming|3.5|0.88|
+|Total|39.5||
+|Average|3.95||
+
 
 - [X] **Laptop Verification or Cloud Workspace**
     - Rank: 4
