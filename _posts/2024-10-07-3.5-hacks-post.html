@@ -1,0 +1,168 @@
+---
+layout: post
+title: Lessons 3.5 Hacks (HTML)
+type: hacks
+permalink: /3-5-hackspost
+courses: { compsci: {week: 6} }
+---
+
+<h1>Password Creator Hack</h1>
+Please open the console to see the results of this hack.
+
+<script>
+    console.log("Password requirements:\n1. The password must be at least 10 characters long.\n2. It must include both uppercase and lowercase letters.\n3. It must contain at least one number.\n4. It must not contain any spaces.")
+
+    user_password=prompt("Please create a password:")
+
+    function passwordChecker(user_password) {
+        // character checking
+        const hasUppercase = /[A-Z]/;
+        const hasLowercase = /[a-z]/;
+        const hasNumber = /[0-9]/;
+        const hasSpace = /\s/;
+
+        // test for each
+        const lengthValid = user_password.length >= 10;
+        const hasUpper = hasUppercase.test(user_password);
+        const hasLower = hasLowercase.test(user_password);
+        const hasNum = hasNumber.test(user_password);
+        const noSpace = !hasSpace.test(user_password);  
+        
+        // if it doesnt have every requirement...
+        if (!(lengthValid && hasUpper && hasLower && hasSpace)){
+            console.log("This password is not valid. Please create a valid password:")
+            return false;
+        }
+
+        return true;
+}
+</script>
+
+
+<h2>Seasons Quiz</h2>
+<h3>Take this quiz to find out what season you are!</h3>
+Disclaimer: I made this quiz at 1AM
+
+  <form id="quiz-form">
+    <div class="question">
+        <p>1. What's your favorite way to spend your free time?</p>
+        <input type="radio" name="q1" value="winter"> A. Spending a night in<br>
+        <input type="radio" name="q1" value="spring"> B. Trying something new<br>
+        <input type="radio" name="q1" value="summer"> C. Doing something you've been thinking about starting on a whim<br>
+        <input type="radio" name="q1" value="fall"> D. Journaling, or having deep conversations with your friends<br>
+    </div>
+
+    <div class="question">
+        <p>2. What kind of movies do you enjoy?</p>
+        <input type="radio" name="q2" value="summer"> A. Action and adventure<br>
+        <input type="radio" name="q2" value="winter"> B. Nostalgic favorites<br>
+        <input type="radio" name="q2" value="spring"> C. Anything new that's come out!<br>
+        <input type="radio" name="q2" value="fall"> D. Dramas<br>
+      </div>
+      
+    <div class="question">
+        <p>3. What's your favorite color?</p>
+        <input type="radio" name="q3" value="fall"> A. Oranges and browns<br>
+        <input type="radio" name="q3" value="spring"> B. Anything bright!<br>
+        <input type="radio" name="q3" value="summer"> C. Warmer colors<br>
+        <input type="radio" name="q3" value="winter"> D. Cooler colors<br>
+    </div>
+  
+    <div class="question">
+        <p>4. What would your friends say about you?</p>
+        <input type="radio" name="q4" value="fall"> A. Quiet and observant<br>
+        <input type="radio" name="q4" value="winter"> B. Relaxed and laid back<br>
+        <input type="radio" name="q4" value="summer"> C. Brave and spontaneous<br>
+        <input type="radio" name="q4" value="spring"> D. Vibrant and fun<br>
+    </div>
+      
+    <div class="question">
+        <p>5. Which quote stands out to you?</p>
+        <input type="radio" name="q5" value="spring"> A. In the springtime, the heart regrows hope<br>
+        <input type="radio" name="q5" value="winter"> B. What good is the warmth of summer, without the cold of winter to give it sweetness?<br>
+        <input type="radio" name="q5" value="fall"> C. Autumn shows us how beautiful it is to let things go<br>
+        <input type="radio" name="q5" value="summer"> D. Summertime is always the best of what might be<br>
+    </div>
+
+    <div class="question">
+        <p>6. How do you prefer to plan your day?</p>
+        <input type="radio" name="q6" value="spring"> A. In my planner<br>
+        <input type="radio" name="q6" value="winter"> B. Why plan? Just hang around and relax.<br>
+        <input type="radio" name="q6" value="fall"> C. In a way that only includes activities most important to me<br>
+        <input type="radio" name="q6" value="summer"> D. With a full, packed itinerary of all the new things to do<br>
+    </div>
+
+    <div class="question">
+      <p>7. Would you consider yourself a type A person or type B? (A = planner, detail-oriented, B = let it happen)</p>
+      <input type="radio" name="q7" value="spring"> A. A for sure!<br>
+      <input type="radio" name="q7" value="summer"> B. Hahahahah yeah I\'m type B <br>
+      <input type="radio" name="q7" value="fall"> C. Does it matter?<br>
+      <input type="radio" name="q7" value="winter"> D. What<br>
+    </div>
+
+    <div class="question">
+      <p>8. What is your favorite class?</p>
+      <input type="radio" name="q8" value="summer"> A. Ceramics! It\'s so different from anything I've ever taken before<br>
+      <input type="radio" name="q8" value="winter"> B. Anything history<br>
+      <input type="radio" name="q8" value="spring"> C. Anything STEM<br>
+      <input type="radio" name="q8" value="fall"> D. Pyschology <br>
+    </div>
+    
+    <div class="question">
+      <p>9. Why would you make me add 10 questions to this quiz?</p>
+      <input type="radio" name="q9" value="fall"> A. Such is life<br>
+      <input type="radio" name="q9" value="spring"> B. Not sure!<br>
+      <input type="radio" name="q9" value="summer"> C. I don\'t mind it<br>
+      <input type="radio" name="q9" value="winter"> D. Who cares<br>
+    </div>
+
+    <div class="question">
+      <p>10. What's your favorite season?</p>
+      <input type="radio" name="q10" value="fall"> A. Fall<br>
+      <input type="radio" name="q10" value="winter"> B. Winter<br>
+      <input type="radio" name="q10" value="summer"> C. Summer<br>
+      <input type="radio" name="q10" value="spring"> D. Spring<br>
+    </div>
+
+    <button type="button" onclick="finalResult()">Submit</button>
+</form>
+
+<h2>Your Season: <span id="result"></span></h2>
+
+<script>
+  function finalResult() {
+    let score = {
+      winter: 0,
+      spring: 0,
+      summer: 0,
+      fall: 0
+    };
+
+    // Grab form data
+    const form = document.getElementById('quiz-form');
+    const formData = new FormData(form);
+
+    // Tally scores
+    for (let [key, value] of formData.entries()) {
+      score[value]++; // Fix variable name to match the score object
+    }
+
+    // Determine result
+    let result = '';
+    const maxScore = Math.max(score.winter, score.spring, score.summer, score.fall);
+
+    // Share answer
+    if (maxScore === score.winter) {
+      result = "Winter: You love taking time to relax and reflect";
+    } else if (maxScore === score.spring) {
+      result = "Spring: You love new beginnings and fresh starts";
+    } else if (maxScore === score.summer) {
+      result = "Summer: You are adventurous and enjoy trying new things";
+    } else if (maxScore === score.fall) {
+      result = "Fall: You are reflective and introspective yet curious";
+    }
+
+    // Display the result
+    document.getElementById('result').textContent = result;
+  }
+</script>
