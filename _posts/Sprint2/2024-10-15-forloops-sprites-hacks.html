@@ -1,0 +1,102 @@
+---
+comments: true
+layout: post
+title: JS ForLoops and Sprites Hacks (HTML)
+courses: { compsci: {week: 8} }
+type: hacks 
+---
+
+<style>
+    #gameCanvas {
+        border: 4px solid rgb(102, 4, 4); /* Red border */
+    }
+</style>
+
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const spriteSheet = new Image();
+    spriteSheet.src = '{{site.baseurl}}/images/boysprite.png';
+
+    const spriteWidth = 294; 
+    const spriteHeight = 376;
+    const totalFrames = 4; // Total number of frames for animation
+
+    const boy = {
+        x: canvas.width / 2 - spriteWidth / 2, // Center the boy on the canvas
+        y: canvas.height / 2 - spriteHeight / 2,
+        speed: 5,
+        frameIndex: 0,
+        direction: 'down'
+    };
+
+    function boyUpdate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+        let sourceY;
+        switch (boy.direction) {
+            case 'down':
+                sourceY = 0; // Row 1 for down
+                break;
+            case 'up':
+                sourceY = spriteHeight; // Row 2 for up
+                break;
+            case 'left':
+                sourceY = spriteHeight * 2; // Row 3 for left
+                break;
+            case 'right':
+                sourceY = spriteHeight * 3; // Row 4 for right
+                break;
+        }
+
+        // Draw the current frame based on direction
+        ctx.drawImage(
+            spriteSheet,
+            boy.frameIndex * spriteWidth, // Source x
+            sourceY, // Source y based on direction
+            spriteWidth, 
+            spriteHeight, 
+            boy.x, 
+            boy.y, 
+            spriteWidth, 
+            spriteHeight 
+        );
+
+        // Increment the frame index for animation (loop back to 0)
+        boy.frameIndex = (boy.frameIndex + 1) % totalFrames;
+
+        requestAnimationFrame(boyUpdate); // Call the update function again
+    }
+
+    // Keyboard event listeners
+    window.addEventListener('keydown', (event) => {
+        switch (event.key) {
+            case 'w': // Move up
+                boy.y -= boy.speed;
+                boy.frameIndex = 1; // Index for "up" animation frame
+                boy.direction = 'up';
+                break;
+            case 'a': // Move left
+                boy.x -= boy.speed;
+                boy.frameIndex = 2; // Index for "left" animation frame
+                boy.direction = 'left';
+                break;
+            case 's': // Move down
+                boy.y += boy.speed;
+                boy.frameIndex = 0; // Index for "down" animation frame
+                boy.direction = 'down';
+                break;
+            case 'd': // Move right
+                boy.x += boy.speed;
+                boy.frameIndex = 3; // Index for "right" animation frame
+                boy.direction = 'right';
+                break;
+        }
+    });
+
+    // Start the animation
+    boyUpdate(); // Initial call to start the update loop
+</script>
