@@ -3,6 +3,7 @@ title: AP Classroom 2018 MC Reflection
 layout: post
 courses: { compsci: {week: 12} }
 type: tangibles
+comments: true
 ---
 
 1. What you learned from quiz?
