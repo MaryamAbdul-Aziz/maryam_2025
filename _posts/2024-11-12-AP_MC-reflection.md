@@ -29,3 +29,11 @@ comments: true
         - I got this question wrong because I was unsure on the definition of an undecideable problem. I originally had the correct answer selected, that an algorithm could not be written for all inputs and programs, but changed it to an answer mentioning a reasonable amount of time.  
     - 57: Generate Happy from Harp and Puppy
         - I got this question wrong because I did not properly read the guidelines posted explaining how the substring function worked. I assumed that the numbers were the indexes of the letters in the strings and didn't realize that the second number was substring length.  
+
+4. Content and Skills Performance Percentages:
+    - 2.1: Binary Numbers: 75% (3/4)
+    - 2.3: Extracting Information from Data: 86% (6/7)
+    - 3.9: Developing Algorithms: 75% (3/4)
+    - 3.12: Calling Procedures: 80% (4/5)
+    - 3.16: Simulations: 50% (1/2)
+    - 3.17: Algorithmic Efficiency: 50% (1/2)
