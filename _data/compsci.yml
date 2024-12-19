@@ -9,3 +9,11 @@ Unit2:
   description: Learn JS and Python from Peer Lessons.
   start: 6
   end: 12
+Unit3:
+  title: Sprint 3
+  start: 13
+  end: 18
+Unit4:
+  title: Spring 4
+  start: 19
+  end: 24
