@@ -18,6 +18,10 @@ I had two main features within this project:
 
 Both of these features served to increase the customizability of our site and ensure that users could have the experience they wanted on the Bookworms
 
+![submission form]({{site.baseurl}}/images/suggest1.png)
+![book display]({{site.baseurl}}/images/suggest2.png)
+
+
 ## List Requests
 
 Within my frontend, I have a function `fetchBooks()` which turns JSON into DOM. After the user submits a form containing information about the book they would like to submit, they receive an alert informing them that their request has been received and the book appears in a book list on the page.
@@ -444,63 +448,4 @@ async function updateBook(title) {
 }
 ```
 
-To display all suggested books in the frontend, I use a fetch request to fetch the list of suggested books and then generate a div for the book.
-
-```javascript
-async function fetchBooks() {
-        try { // Fetch all suggested books
-            const response = await fetch(new URL(`${pythonURI}/api/suggest/book`), fetchOptions); 
-            if (!response.ok) {
-                throw new Error('Failed to fetch books: ' + response.statusText);
-            }
-
-        const books = await response.json();
-
-        const bookList = document.getElementById('book-list-content');
-        if (books.length === 0) {
-            bookList.innerHTML = '<p style="color: #000000">No books added yet. Fill out the form above to start adding your favorite books!</p>';
-            return;
-        }
-
-        // Render books
-        bookList.innerHTML = books
-    .map(
-        book => `
-        <div class="book">
-            <h3>${book.title}</h3>
-            <p><strong>Author:</strong> ${book.author}</p>
-            <p><strong>Genre:</strong> ${book.genre}</p>
-            <p><strong>Description:</strong> ${book.description}</p>
-            <img src="${book.cover_url}" alt="Cover image of ${book.title}">
-            <div class="book-options">
-                <button class="updateButton" data-title="${book.title}">Update</button>
-                <button class="deleteButton" data-title="${book.title}">Delete</button>
-            </div>
-        </div>
-    `
-    )
-    .join('');
-        
-        document.querySelectorAll('.updateButton').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const title = event.target.dataset.title; // Get the title from data attribute
-                updateBook(title);
-            });
-        });
-        document.querySelectorAll('.deleteButton').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const title = event.target.dataset.title; 
-                deleteBook(title);
-            });
-        });
-
-    } catch (error) {
-        console.error('Error fetching books:', error);
-    }
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    fetchBooks();
-});
-```
+To display all suggested books in the frontend, I use a fetch request to fetch the list of suggested books and then generate a div for the book. (see top)
