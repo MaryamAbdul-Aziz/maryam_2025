@@ -276,3 +276,231 @@ def delete_book():
     except Exception as e:
         return jsonify({'error': 'Failed to delete book', 'message': str(e)}), 500
 ```
+
+## Call to Algorithm request
+
+In order to create a suggested book, in my frontend, I use a function that calls my suggest books API endpoint and uses the POST feature.
+
+```javascript
+document.getElementById('book-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        // define variables based on fields in form
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const genre = document.getElementById('genre').value;
+        const description = document.getElementById('description').value;
+        const coverImageUrl = document.getElementById('cover_url').value;
+
+        const bookData = {
+            title: title,
+            author: author,
+            genre: genre,
+            description: description,
+            cover_url: coverImageUrl
+        };
+
+        // post request
+        try {
+            const response = await fetch(`${pythonURI}/api/suggest`, {  // Use /api/suggest endpoint
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add book to suggestions: ' + response.statusText);
+            }
+
+            const result = await response.json();
+            console.log("Book added to suggestions successfully")
+            alert('Book added successfully!');
+            document.getElementById('book-form').reset();
+            fetchBooks();  // Refresh book list
+        } catch (error) {
+            console.error('Error adding book to suggestions:', error);
+            alert('Error adding book to suggestions: ' + error.message);
+        }
+    });
+```
+
+To delete a book, I call the suggest API endpoint and use the DELETE function.
+
+```javascript
+async function deleteBook(title) {
+        if (confirm(`Are you sure you want to delete "${title}"?`)) {
+            try { // delete request
+                const response = await fetch(`${pythonURI}/api/suggest`, {
+                    ...fetchOptions,
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ title }) // Pass title as an object
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to delete book: ' + response.statusText);
+                }
+
+                console.log("Book deleted successfully");
+                alert('Book deleted successfully!');
+                fetchBooks(); // Refresh the book list
+            } catch (error) {
+                console.error('Error deleting book:', error);
+                alert('Error deleting book: ' + error.message);
+            }
+        } else {
+            alert("Deletion canceled");
+        }
+    }
+```
+
+There is a similar function to update a book (PUT) that creates text fields for the user to update the book.
+
+```javascript
+async function updateBook(title) {
+    // Find the book container based on the title
+    const bookContainer = Array.from(document.querySelectorAll('.book'))
+        .find(book => book.querySelector('h3').innerText === title);
+
+    if (!bookContainer) {
+        alert('Book not found for update.');
+        return;
+    }
+
+    // Extract current book details
+    const currentTitle = bookContainer.querySelector('h3').innerText;
+    const currentAuthor = bookContainer.querySelector('p:nth-child(2)').innerText.split(': ')[1];
+    const currentDescription = bookContainer.querySelector('p:nth-child(3)').innerText.split(': ')[1];
+    const currentGenre = bookContainer.dataset.genre || '';
+    const currentCoverUrl = bookContainer.querySelector('img').src;
+
+    // creates editable fields
+    bookContainer.innerHTML = `
+        <input type="text" id="edit-title" value="${currentTitle}" placeholder="Title">
+        <input type="text" id="edit-author" value="${currentAuthor}" placeholder="Author">
+        <select id="edit-genre">
+            <option value="Classics" ${currentGenre === 'Classics' ? 'selected' : ''}>Classics</option>
+            <option value="Fantasy" ${currentGenre === 'Fantasy' ? 'selected' : ''}>Fantasy</option>
+            <option value="Nonfiction" ${currentGenre === 'Nonfiction' ? 'selected' : ''}>Nonfiction</option>
+            <option value="Historical Fiction" ${currentGenre === 'Historical Fiction' ? 'selected' : ''}>Historical Fiction</option>
+            <option value="Suspense/Thriller" ${currentGenre === 'Suspense/Thriller' ? 'selected' : ''}>Suspense/Thriller</option>
+            <option value="Romance" ${currentGenre === 'Romance' ? 'selected' : ''}>Romance</option>
+            <option value="Dystopian" ${currentGenre === 'Dystopian' ? 'selected' : ''}>Dystopian</option>
+            <option value="Mystery" ${currentGenre === 'Mystery' ? 'selected' : ''}>Mystery</option>
+        </select>
+        <textarea id="edit-description" placeholder="Description">${currentDescription}</textarea>
+        <input type="text" id="edit-cover-url" value="${currentCoverUrl}" placeholder="Cover URL">
+        <button id="save-update">OK</button>
+        <button id="cancel-update">Cancel</button>
+    `;
+
+    // Cancel Button
+    document.getElementById('cancel-update').addEventListener('click', () => {
+        fetchBooks(); // Reload the book list to cancel editing
+    });
+
+    document.getElementById('save-update').addEventListener('click', async () => {
+        const updatedTitle = document.getElementById('edit-title').value;
+        const updatedAuthor = document.getElementById('edit-author').value;
+        const updatedGenre = document.getElementById('edit-genre').value;
+        const updatedDescription = document.getElementById('edit-description').value;
+        const updatedCoverUrl = document.getElementById('edit-cover-url').value;
+
+        const updatedBookData = {
+            title: title,
+            author: updatedAuthor,
+            genre: updatedGenre,
+            description: updatedDescription,
+            cover_url: updatedCoverUrl
+        };
+
+        try {
+            const response = await fetch(`${pythonURI}/api/suggest`, {
+                ...fetchOptions,
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedBookData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to update book: ' + response.statusText);
+            }
+
+            console.log('Book updated successfully');
+            alert('Book updated successfully!');
+            fetchBooks(); // Refresh the book list
+        } catch (error) {
+            console.error('Error updating book:', error);
+            alert('Error updating book: ' + error.message);
+        }
+    });
+}
+```
+
+To display all suggested books in the frontend, I use a fetch request to fetch the list of suggested books and then generate a div for the book.
+
+```javascript
+async function fetchBooks() {
+        try { // Fetch all suggested books
+            const response = await fetch(new URL(`${pythonURI}/api/suggest/book`), fetchOptions); 
+            if (!response.ok) {
+                throw new Error('Failed to fetch books: ' + response.statusText);
+            }
+
+        const books = await response.json();
+
+        const bookList = document.getElementById('book-list-content');
+        if (books.length === 0) {
+            bookList.innerHTML = '<p style="color: #000000">No books added yet. Fill out the form above to start adding your favorite books!</p>';
+            return;
+        }
+
+        // Render books
+        bookList.innerHTML = books
+    .map(
+        book => `
+        <div class="book">
+            <h3>${book.title}</h3>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p><strong>Genre:</strong> ${book.genre}</p>
+            <p><strong>Description:</strong> ${book.description}</p>
+            <img src="${book.cover_url}" alt="Cover image of ${book.title}">
+            <div class="book-options">
+                <button class="updateButton" data-title="${book.title}">Update</button>
+                <button class="deleteButton" data-title="${book.title}">Delete</button>
+            </div>
+        </div>
+    `
+    )
+    .join('');
+        
+        document.querySelectorAll('.updateButton').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const title = event.target.dataset.title; // Get the title from data attribute
+                updateBook(title);
+            });
+        });
+        document.querySelectorAll('.deleteButton').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const title = event.target.dataset.title; 
+                deleteBook(title);
+            });
+        });
+
+    } catch (error) {
+        console.error('Error fetching books:', error);
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchBooks();
+});
+```
