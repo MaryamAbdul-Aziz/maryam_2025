@@ -204,6 +204,117 @@ def initSuggest():
                 db.session.rollback()
 ```
 
+## Sequencing, Selection, and Iteration
+
+### Sequencing
+
+When adding a book to the suggested books database, the code runs through a sequence:
+1. Pull user-inputted data from the form in the frontend
+2. Call the suggest API endpoint
+3. JSONify the input
+4. Add it to the database
+
+### Selection
+
+I use conditional statements throughout my code to ensure its functionality
+
+
+This code checks to ensure the title is included when making a DELETE request
+
+```python
+@suggest_api.route('', methods=['POST'])  
+def add_book():
+    if not request.json or 'title' not in request.json:
+        return jsonify({'error': 'Title is required to create the book'}), 400
+```
+
+This code checks to ensure there is book data in order to fetch a random book
+
+```python
+@suggest_api.route('/random', methods=['GET'])
+def random_book():
+    book = SuggestedBook.get_random_suggested_book()
+    if book:
+        return jsonify({
+            'title': book.title,
+            'author': book.author,
+            'genre': book.genre,
+            'description': book.description,
+            'cover_url': book.cover_url
+        })
+    else:
+        return jsonify({'error': 'No books found'}), 404
+```
+
+This code ensures that the title was inputted before updating a book
+
+```python
+@suggest_api.route('', methods=['PUT'])
+def update_book():
+    data = request.json
+
+    title = data.get('title')
+    if not title:
+        return jsonify({'error': 'Title is required to update the book'}), 400
+```
+
+In my frontend, I have code that checks for existing suggested books when displaying suggested books.
+
+```javascript
+const bookList = document.getElementById('book-list-content');
+        if (books.length === 0) {
+            bookList.innerHTML = '<p style="color: #000000">No books added yet. Fill out the form above to start adding your favorite books!</p>';
+            return;
+        }
+```
+
+This code confirms the user wants to delete a book before deleting it.
+
+```javascript
+async function deleteBook(title) {
+        if (confirm(`Are you sure you want to delete "${title}"?`)) {
+    // more code here
+}}
+```
+
+### Iteration
+
+I use iteration for my bulk post book request.
+
+```python
+@suggest_api.route('/bulk', methods=['POST'])
+def add_books_bulk():
+    data = request.json
+
+    if not isinstance(data, list):
+        return jsonify({'error': 'Expected a list of books'}), 400
+
+    results = []
+
+    for book_data in data:
+        title = book_data.get('title')
+        author = book_data.get('author')
+        genre = book_data.get('genre')
+        description = book_data.get('description')
+        cover_url = book_data.get('cover_url')
+```
+
+I also iterate through all books in the db when fetching all suggested books
+
+```python
+books_data = [
+    {
+        'title': book.title,
+        'author': book.author,
+        'genre': book.genre,
+        'description': book.description,
+        'cover_url': book.cover_url
+    }
+    for book in books
+]
+```
+
+
 ## Algorithmic Code Request
 
 The methods within `model/suggest.py` are tied to functions within `api/suggest.py` that utilize POST (shown above), GET, PUT, and DELETE in Postman.
