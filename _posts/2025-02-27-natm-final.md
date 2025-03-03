@@ -46,7 +46,7 @@ courses: { compsci: {week: 24} }
 - [Rejecting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#rejecting-a-suggestion)
 
 5. Guided deployment within my group, creating deployment blog, registering DNS name using Route53 in AWS, setting up Certbot to ensure site is secured and using https, and pulling in the backend when changes are made to update deployment (docker-compose down, build, up, etc.)
-- [Deployment blog (links to external)](https://gabrielac07.github.io/bookworms/deployment)
+- <a href="https://gabrielac07.github.io/bookworms/deployment" target="_blank">Deployment blog (links to external)</a>
 
 # Full Stack Project, CPT Requirements
 
