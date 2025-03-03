@@ -19,6 +19,7 @@ courses: { compsci: {week: 24} }
 10th point:
 - DMed teacher in advance of live review
 - Attended N@tM, took interest in other groups, gave feedback and specific praise
+- Completed reflection + retrospective of progress, strengths and weaknesses over the trimester
 
 # 5 things completed over 12 weeks
 
@@ -30,22 +31,28 @@ courses: { compsci: {week: 24} }
 
 
 1. Learned how to create API endpoints with HTTP methods like POST, GET, PUT, DELETE
+
 [INPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#input)
 
 [PROCEDURE](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#procedure)
 
 2. Created frontend display of suggested books using fetch requests that call APIs to use HTTP methods like update and delete to edit user-inputted info
+
 [OUTPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#output)
 
 3. Created read, update, restore, backup methods in backend that help build table/model in database and ensure data can be backed up and restored after data is initialized.
+
 [Database](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#database)
 
 
 4. Created endpoint that "accepts" or "rejects" user-suggested books, requiring user authentication/token and using an endpoint that adds the book to the main database and deletes from the suggested database while telling the user which books have been reviewed by admin.
+
 [Accepting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#accepting-a-suggestion)
+
 [Rejecting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#rejecting-a-suggestion)
 
 5. Guided deployment within my group, creating deployment blog, registering DNS name using Route53 in AWS, setting up Certbot to ensure site is secured and using https, and pulling in the backend when changes are made to update deployment (docker-compose down, build, up, etc.)
+
 [Deployment blog (links to external)](https://gabrielac07.github.io/bookworms/deployment)
 
 # Full Stack Project, CPT Requirements
@@ -60,6 +67,9 @@ My code receives input from the user when:
 - Rejecting a suggestion
 
 ### Submitting a suggestion:
+
+![book form]({{site.baseurl}}/images/t2-bookform.png)
+
 ```javascript
 document.getElementById('book-form').addEventListener('submit', async function(event) {
         event.preventDefault();
@@ -416,6 +426,8 @@ return jsonify({'message': 'Book added successfully to suggestions'}), 201
         return jsonify({'error': 'Failed to add book', 'message': str(e)}), 500
 ```
 
+![book display]({{site.baseurl}}/images/t2-bookdisplay.png)
+
 Visual display in frontend:
 ```javascript
 async function fetchBooks() {
@@ -610,6 +622,8 @@ From a user standpoint, my feature is useful and has purpose when considered in 
 # MCQ
 Score: 60/67 (89.5%)
 
+![mcq]({{site.baseurl}}/images/tri2-mcq.png)
+
 ## Areas where I missed points:
 
 - 1, Design and evaluate computational solutions for a purpose (14/17)
@@ -650,7 +664,6 @@ Score: 60/67 (89.5%)
 
 # Reflection
 
-
 Over the course of this trimester, I feel that I have learned a lot about computer science, including **APIs and HTTP methods, frontend to backend, collaboration, project management**, and more. Even though I do not plan to pursue a career in computer science, **I know that these skills will help me in the professional world**. 
 
 Knowing what works and what does not, like **using Slack** to maintain communication between group members and **utilizing my debugging tools** as much as possible, I hope to carry these skills onto the next trimester with my next group. 
@@ -658,6 +671,8 @@ Knowing what works and what does not, like **using Slack** to maintain communica
 I have also learned a lot about myself and my own strengths and weaknesses. I think I have a strong suit for **problem solving**, including debugging, trying unique solutions, working around an issue, and **asking for help**, communicating my needs well. 
 
 One of my weaknesses is **project synergy** with the rest of my group; while we communicate a lot about our issues and what needs to get done, many times, our project **felt out of sync with itself** as different parts all worked on their own like free agents. In the future, I will try to **ensure unity within my group** so that the finished project looks cohesive. 
+
+In future Computer Science courses, I will ensure that I **communicate well with my group** and check on others' code to **ensure that there is a sense of cohesion**. I also plan on starting **study groups, attending office hours**, visitng forums, and contiuing to **ask questions** so I have the highest possible understanding of the subject and my code.
 
 
 <button onclick="toTop()" id="topBtn" title="Go to top">Top</button>
