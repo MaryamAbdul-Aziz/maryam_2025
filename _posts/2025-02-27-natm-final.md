@@ -30,15 +30,23 @@ courses: { compsci: {week: 24} }
 
 
 1. Learned how to create API endpoints with HTTP methods like POST, GET, PUT, DELETE
+[INPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#input)
+
+[PROCEDURE](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#procedure)
 
 2. Created frontend display of suggested books using fetch requests that call APIs to use HTTP methods like update and delete to edit user-inputted info
+[OUTPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#output)
 
 3. Created read, update, restore, backup methods in backend that help build table/model in database and ensure data can be backed up and restored after data is initialized.
+[Database](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#database)
+
 
 4. Created endpoint that "accepts" or "rejects" user-suggested books, requiring user authentication/token and using an endpoint that adds the book to the main database and deletes from the suggested database while telling the user which books have been reviewed by admin.
+[Accepting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#accepting-a-suggestion)
+[Rejecting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#rejecting-a-suggestion)
 
 5. Guided deployment within my group, creating deployment blog, registering DNS name using Route53 in AWS, setting up Certbot to ensure site is secured and using https, and pulling in the backend when changes are made to update deployment (docker-compose down, build, up, etc.)
-
+[Deployment blog (links to external)](https://gabrielac07.github.io/bookworms/deployment)
 
 # Full Stack Project, CPT Requirements
 
@@ -181,6 +189,38 @@ async function updateBook(title) {
 ```
 
 ### Deleting a suggestion:
+```javascript
+async function deleteBook(title) {
+        if (confirm(`Are you sure you want to delete "${title}"?`)) {
+            try {
+                const response = await fetch(`${pythonURI}/api/suggest`, {
+                    ...fetchOptions,
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ title }) // Pass title as an object
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to delete book: ' + response.statusText);
+                }
+
+                console.log("Book deleted successfully");
+                alert('Book deleted successfully!');
+                fetchBooks(); // Refresh the book list
+            } catch (error) {
+                console.error('Error deleting book:', error);
+                alert('Error deleting book: ' + error.message);
+            }
+        } else {
+            alert("Deletion canceled");
+        }
+    }
+```
+
+
+### Accepting a suggestion:
 ```javascript
 let acceptedBooks = ""; // Variable to store accepted books list
 
@@ -424,6 +464,112 @@ async function fetchBooks() {
 }}
 ```
 
+## Database
+I also learned how to setup a database with initialized data and read, backup, and restore methods (CRUD methods) for working with the database.
+
+```python
+class SuggestedBook(db.Model):
+    __tablename__ = 'suggestions'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, unique=True, nullable=False)
+    author = db.Column(db.String, nullable=False)
+    genre = db.Column(db.String, nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    cover_url = db.Column(db.String, nullable=True)
+
+    def __init__(self, title, author, genre, description, cover_url):
+        self.title = title
+        self.author = author
+        self.genre = genre
+        self.description = description
+        self.cover_url = cover_url
+
+    def add_suggested_book(title, author, genre, description, cover_url):
+        new_suggested_book = SuggestedBook(
+            title=title,
+            author=author,
+            genre=genre,
+            description=description,
+            cover_url=cover_url
+        )
+
+        new_book = Book(
+            title=title,
+            author=author,
+            genre=genre,
+            description=description,
+            cover_url=cover_url
+        )
+
+        try:
+            db.session.add(new_suggested_book)
+            db.session.add(new_book)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            raise e
+```
+
+CRUD
+```python
+def create(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    def read(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "author": self.author,
+            "genre": self.genre,
+            "description": self.description,
+            "cover_url": self.cover_url
+        }
+        
+    def update(self):
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            raise e
+    
+    def delete(self):
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+        raise Exception(f"An error occurred while deleting the object: {str(e)}") from e
+```
+
+Initialization function
+```python
+def initSuggest():
+    with app.app_context():
+        db.create_all()
+        
+    # tester data
+    suggest_data = [
+        SuggestedBook(title="The Raven Boys", author="Maggie Stiefvater", genre="Fantasy", description="A young adult fantasy novel about a girl from a family of clairvoyants, the boys she befriends, and how their lives are intertwined along their journey to wake a slumbering king.", cover_url="https://m.media-amazon.com/images/I/71s5v4HfFjL._AC_UF1000,1000_QL80_.jpg"),
+        SuggestedBook(title="Catch-22", author="Joseph Heller", genre="Classics", description="The work centres on Captain John Yossarian, an American bombardier stationed on a Mediterranean island during World War II, and chronicles his desperate attempts to stay alive.", cover_url="https://d28hgpri8am2if.cloudfront.net/book_images/cvr9781451621174_9781451621174_hr.jpg"),
+        SuggestedBook(title="A Midsummer Night\'s Dream", author="William Shakespeare", genre="Classics", description="Four Athenians run away to the forest only to have Puck the fairy make both of the boys fall in love with the same girl.", cover_url="https://m.media-amazon.com/images/I/71plvG7VRiL._AC_UF1000,1000_QL80_.jpg"),
+        SuggestedBook(title="Never Let Me Go", author="Kazuo Ishiguro", genre="Mystery", description="Never Let Me Go follows students\' lives at an elite boarding school. The story explores themes of friendship, memories, and what it means to be human, gradually revealing deeper mysteries about the nature of their world.", cover_url="https://images.penguinrandomhouse.com/cover/9781400078776"),        
+        SuggestedBook(title="A Deadly Education", author="Naomi Novik", genre="Fantasy", description="A Deadly Education is a 2020 fantasy novel written by American author Naomi Novik following Galadriel \"El\" Higgins, a half-Welsh, half-Indian sorceress, who must survive to graduation while controlling her destructive abilities at a school of magic very loosely inspired by the legend of the Scholomance.", cover_url="https://m.media-amazon.com/images/I/81j2VmcrS-L._AC_UF1000,1000_QL80_.jpg"),
+        SuggestedBook(title="House of Leaves", author="Mark Z. Danielewski", genre="Suspense/Thriller", description="The House of Leaves synopsis details a story about a young man who finds a manuscript about a family's documentary, The Navidson Record, which details their experiences with a strange house.", cover_url="https://images.penguinrandomhouse.com/cover/9780375420528"),
+        SuggestedBook(title="The Cruel Prince", author="Holly Black", genre="Fantasy", description="Jude was seven years old when her parents were murdered and she and her two sisters were stolen away to live in the treacherous High Court of Faerie. Ten years later, Jude wants nothing more than to belong there, despite her mortality. But many of the fey despise humans.", cover_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFRlLnHzV7FMzb6ouRYUgQmKd34ss7NZTbcw&s"),    
+        SuggestedBook(title="The Very Hungry Caterpillar", author="Eric Carle", genre="Classics", description="The plot follows a very hungry caterpillar that consumes a variety of foods before pupating and becoming a butterfly", cover_url="https://upload.wikimedia.org/wikipedia/en/b/b5/HungryCaterpillar.JPG"),    
+    ]
+    
+
+    for suggestion in suggest_data:
+            try:
+                if not Book.query.filter_by(title=suggestion.title).first() and not SuggestedBook.query.filter_by(title=suggestion.title).first():
+                    db.session.add(suggestion)
+                    db.session.commit()
+            except IntegrityError:
+                # Fails with bad or duplicate data
+                db.session.rollback()
+```
 
 # N@tM Feedback + Experience
 
