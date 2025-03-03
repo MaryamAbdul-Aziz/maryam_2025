@@ -31,29 +31,22 @@ courses: { compsci: {week: 24} }
 
 
 1. Learned how to create API endpoints with HTTP methods like POST, GET, PUT, DELETE
-
-[INPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#input)
-
-[PROCEDURE](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#procedure)
+- [INPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#input)
+- [PROCEDURE](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#procedure)
 
 2. Created frontend display of suggested books using fetch requests that call APIs to use HTTP methods like update and delete to edit user-inputted info
-
-[OUTPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#output)
+- [OUTPUT](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#output)
 
 3. Created read, update, restore, backup methods in backend that help build table/model in database and ensure data can be backed up and restored after data is initialized.
-
-[Database](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#database)
+- [Database](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#database)
 
 
 4. Created endpoint that "accepts" or "rejects" user-suggested books, requiring user authentication/token and using an endpoint that adds the book to the main database and deletes from the suggested database while telling the user which books have been reviewed by admin.
-
-[Accepting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#accepting-a-suggestion)
-
-[Rejecting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#rejecting-a-suggestion)
+- [Accepting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#accepting-a-suggestion)
+- [Rejecting](https://maryamabdul-aziz.github.io/maryam_2025//2025/02/27/natm-final.html#rejecting-a-suggestion)
 
 5. Guided deployment within my group, creating deployment blog, registering DNS name using Route53 in AWS, setting up Certbot to ensure site is secured and using https, and pulling in the backend when changes are made to update deployment (docker-compose down, build, up, etc.)
-
-[Deployment blog (links to external)](https://gabrielac07.github.io/bookworms/deployment)
+- [Deployment blog (links to external)](https://gabrielac07.github.io/bookworms/deployment)
 
 # Full Stack Project, CPT Requirements
 
