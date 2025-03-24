@@ -1,5 +1,4 @@
 ---
-toc: true
 comments: true
 layout: post
 title: Beneficial and Harmful Effects Hacks
