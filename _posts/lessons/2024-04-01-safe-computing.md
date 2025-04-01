@@ -3,7 +3,7 @@ comments: true
 layout: post
 title: Safe Computing Hacks
 type: hacks
-courses: { compsci: {week: 28} }
+courses: { compsci: {week: 27} }
 ---
 
 ## Popcorn Hacks
