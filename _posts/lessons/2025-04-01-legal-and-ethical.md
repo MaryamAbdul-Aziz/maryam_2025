@@ -19,5 +19,6 @@ courses: { compsci: {week: 27} }
 
 An MIT license would be best for this repository as I do not have or need a patent for my code and I want my code to be available for anyone to use, even if derivatives are not open source. I value open source, collaborative code, so this license makes the most sense for me.
 
-[License](https://github.com/MaryamAbdul-Aziz/maryam_2025/blob/main/LICENSE)
+## [ Link to my license](https://github.com/MaryamAbdul-Aziz/maryam_2025/blob/main/LICENSE)
 
+![quizlet results]({{site.baseurl}}/images/lessons/lequizlet.png)
