@@ -1,10 +1,11 @@
-------
+---
 comments: true
 layout: post
 title: Undecidable Problems, Graphs, and Heuristics Hacks
 type: hacks
 courses: { compsci: {week: 30} }
-------
+---
+
 
 ## Hacks
 
