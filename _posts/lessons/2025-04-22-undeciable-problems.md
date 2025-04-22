@@ -1,4 +1,4 @@
----
+------
 comments: true
 layout: post
 title: Undecidable Problems, Graphs, and Heuristics Hacks
