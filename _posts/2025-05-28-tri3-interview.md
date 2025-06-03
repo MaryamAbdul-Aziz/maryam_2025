@@ -133,20 +133,30 @@ Slack
 
 ![Deployment]({{site.baseurl}}/images/interview/deployment.png)
 
-## GitHub Profile
+- Communication skills
+
+- Team organization
+
+- Organization
+
+- Work ethic, willingness to learn
+
+## GitHub Profile Review
 
 [Profile link](https://github.com/MaryamAbdul-Aziz)
 
-Students will conduct a final interview of their key accomplishments in coding. This should be in format of why Pilot City should hire you for an internship in Full Stack coding.
+# N@tM Showcase
 
-You are expect to know Full Stack development and have experience in Python, JavaScript, ML, and Databases. In this process, you should send some information in advance and cover the remainder below. Your interview will be 5 to 10 minutes.
+- Live demos of projects
 
-- Preview of LinkedIn profile
-- Introduction of Key Interests and how Coding intersects with those interests
-- Overview of Projects and how you worked with a Team.
-- Teamwork methodologies and artifacts showing your participation.
-- Introduction of Full Stack Coding Skill set
-- GitHub Project and Profile review
-Describe how you have showcased projects (ie N@tM May 2025)
-Demo of your Favorite project(s) that apply to interview
-Unique qualification that makes you the right person for the task.
+- Hands-on for audience as well as guided demo
+
+- Verbal explanation of purpose, technical features, design choices
+
+# Demo
+
+[Bookworms suggest](https://gabrielac07.github.io/bookworms/bookadd/)
+
+[GlucoQuest "What do you eat?"](https://vibha1019.github.io/glucoquest_frontend/foodchoice/)
+
+[GlucoQuest "Glucose Grand Prix"](https://vibha1019.github.io/glucoquest_frontend/grandprix/)
